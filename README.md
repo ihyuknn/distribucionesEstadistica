@@ -1,2 +1,2 @@
 # distribucionesEstadistica
-Tarea 1, Clase de estadistica
+Tareas de la Clase de estadistica
