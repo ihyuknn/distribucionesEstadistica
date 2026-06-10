@@ -1,0 +1,154 @@
+---
+title: "Graficos 3D"
+author: "Karen Lopez"
+date: "2026-06-10"
+output: html_document
+---
+
+##Supongamos que queremos graficar la siguiente funcion
+$$
+f(x,y)=\sqrt{16-4x^2-y^2}
+$$
+
+## Graficos 3D
+
+La funcion Utilizada es:
+```{r}
+x <- seq(-2, 2, length = 50)
+y <- seq(-4, 4, length = 50)
+z <- outer(x, y, function(x, y) sqrt(16 - 4 * x^2 - y^2))
+z[is.na(z)] <- 0
+persp(x, y, z, theta = -30, expand = 0.5, ticktype = "detailed")
+```
+
+
+```{r}
+persp(x, y, z, theta = 30, expand = 0.5, ticktype = "detailed")
+```
+
+
+Ahora como se ven cortados
+```{r}
+image(x, y, z)
+contour(x, y, z, add = TRUE)
+
+```
+
+
+A continuación tenemos los siguientes ejercicios para graficar las **superficies y contornos** en R
+
+#Ejercicio 49
+$$
+z = x + y
+$$
+La funcion utilizada es:
+```{r}
+x <- seq(-5, 5, length = 50)
+y <- seq(-5, 5, length = 50)
+z <- outer(x, y, function(x, y) x + y)
+
+persp(x, y, z, theta = 30, phi = 30, ticktype = "detailed")
+contour(x, y, z)
+```
+y queda de esta forma.
+
+#Ejercicio 50
+
+$$
+z = 6 - 2x - 3y
+$$
+La función utilizada es:
+```{r}
+z <- outer(x, y, function(x, y) 6 - 2*x - 3*y)
+
+persp(x, y, z, theta = 30, phi = 30, ticktype = "detailed")
+contour(x, y, z)
+```
+y queda de esta forma.
+
+#Ejercicio 51
+Ahora tenemos la siguiente función:
+$$
+z = x^2 + 4y^2
+$$
+Usandolo para graficar queda de la siguiente manera:
+```{r}
+z <- outer(x, y, function(x, y) x^2 + 4*y^2)
+
+persp(x, y, z, theta = 30, phi = 30, ticktype = "detailed")
+contour(x, y, z)
+```
+quedando de la siguiente manera.
+
+#Ejercicio 52
+
+A continuación tenemos la siguiente información
+$$
+f(x,y) = \sqrt{(9 - x^2 - y^2)}
+$$
+
+Utilizando la funcion para graficarlo queda de la siguiente manera:
+```{r}
+x <- seq(-3, 3, length = 50)
+y <- seq(-3, 3, length = 50)
+z <- outer(x, y, function(x, y) sqrt(9 - x^2 - y^2))
+z[is.na(z)] <- 0
+
+persp(x, y, z, theta = 30, phi = 30, ticktype = "detailed")
+contour(x, y, z)
+```
+
+#Ejercicio 53
+
+$$
+f(x,y) = xy
+$$
+La funcion para graficarlo es la siguiente:
+```{r}
+x <- seq(-5, 5, length = 50)
+y <- seq(-5, 5, length = 50)
+z <- outer(x, y, function(x, y) x*y)
+
+persp(x, y, z, theta = 30, phi = 30, ticktype = "detailed")
+contour(x, y, z)
+```
+
+#Ejercicio 54
+$$
+f(x,y) = e^(xy/2)
+$$
+Su funcion a graficar es la siguiente:
+```{r}
+z <- outer(x, y, function(x, y) exp((x*y)/2))
+
+persp(x, y, z, theta = 30, phi = 30, ticktype = "detailed")
+contour(x, y, z)
+```
+
+#Ejercicio 55
+$$
+f(x,y) = x / (x^2 + y^2)
+$$
+su funcion utilizada es la siguiente 
+```{r}
+z <- outer(x, y, function(x, y) x / (x^2 + y^2))
+z[is.infinite(z)] <- NA
+
+persp(x, y, z, theta = 30, phi = 30, ticktype = "detailed")
+contour(x, y, z)
+```
+
+#Ejercicio 56
+$$
+f(x,y) = ln(x - y)
+$$
+en este caso la funcion queda de la siguiente manera:
+```{r}
+z <- outer(x, y, function(x, y) log(x - y))
+z[is.na(z)] <- NA
+z[is.infinite(z)] <- NA
+
+persp(x, y, z, theta = 30, phi = 30, ticktype = "detailed")
+contour(x, y, z)
+```
+
